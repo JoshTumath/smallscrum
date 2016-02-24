@@ -1,4 +1,5 @@
 # Smallscrum
+[![Build Status](https://travis-ci.com/JoshTumath/smallscrum.svg?token=tp7LrsAJ5P39ZTw9qWtB&branch=master)](https://travis-ci.com/JoshTumath/smallscrum)
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
