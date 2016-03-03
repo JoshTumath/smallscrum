@@ -7,7 +7,7 @@
     <ul>
       <li>
         {{#if session.isAuthenticated}}
-          <a {{action 'logout'}}>Logout</a>
+          <button {{action 'logout'}}>Logout</button>
         {{else}}
           {{#link-to 'login'}}Login{{/link-to}}
         {{/if}}

@@ -1,8 +1,20 @@
+/* Fixes
+   ========================================================================== */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Main
+   ========================================================================== */
 body {
   margin: 0;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
+/* Header
+   ========================================================================== */
 header {
   background: #efefef;
   font-size: 1.25rem;
@@ -35,9 +47,19 @@ header nav li {
   display: block;
 }
 
-header a {
+header a,
+header button {
   display: block;
   padding: 0 1em;
   text-decoration: inherit;
   color: inherit;
+}
+
+header button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
 }
