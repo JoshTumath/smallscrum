@@ -5,11 +5,15 @@ export default function() {
     let body = JSON.parse(request.requestBody);
 
     if (body.grant_type !== 'password') {
-      return new Mirage.Response(400, { some: 'header' }, { 'error': 'unsupported_grant_type' });
+      return new Mirage.Response(400, {}, {
+        'error': 'unsupported_grant_type'
+      });
     }
 
     if (!(body.username === 'test@example.com' && body.password === 'password')) {
-      return new Mirage.Response(400, { some: 'header' }, { 'error': 'invalid_grant' });
+      return new Mirage.Response(400, {}, {
+        'error': 'invalid_grant'
+      });
     }
 
     return {
