@@ -6,6 +6,7 @@ body {
 header {
   background: #efefef;
   font-size: 1.25rem;
+  line-height: 2.5em;
 }
 
 header:after {
@@ -14,17 +15,14 @@ header:after {
   clear: both;
 }
 
-nav {
-  float: left;
-}
-
 h1,
+nav,
 header nav li {
   float: left;
-  width: 12em;
 }
 
 h1 {
+  margin: 0;
   font-size: inherit;
 }
 
@@ -37,8 +35,9 @@ header nav li {
   display: block;
 }
 
-header nav a {
+header a {
   display: block;
+  padding: 0 1em;
   text-decoration: inherit;
   color: inherit;
 }
