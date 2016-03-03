@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+header {
+  background: #efefef;
+  font-size: 1.25rem;
+}
+
+header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+nav {
+  float: left;
+}
+
+h1,
+header nav li {
+  float: left;
+  width: 12em;
+}
+
+h1 {
+  font-size: inherit;
+}
+
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+header nav li {
+  display: block;
+}
+
+header nav a {
+  display: block;
+  text-decoration: inherit;
+  color: inherit;
+}
