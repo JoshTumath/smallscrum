@@ -1,3 +1,5 @@
+import Mirage from 'ember-cli-mirage';
+
 export default function() {
   this.post('/token', function(db, request) {
     let body = JSON.parse(request.requestBody);
