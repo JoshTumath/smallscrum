@@ -3,17 +3,15 @@
     {{#link-to 'index'}}SmallScrum{{/link-to}}
   </h1>
 
-  <nav>
-    <ul>
-      <li>
-        {{#if session.isAuthenticated}}
+  {{#if session.isAuthenticated}}
+    <nav>
+      <ul>
+        <li>
           <button {{action 'logout'}}>Logout</button>
-        {{else}}
-          {{#link-to 'login'}}Login{{/link-to}}
-        {{/if}}
-      </li>
-    </ul>
-  </nav>
+        </li>
+      </ul>
+    </nav>
+  {{/if}}
 </header>
 
 <main>
