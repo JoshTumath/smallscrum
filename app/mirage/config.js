@@ -1,8 +1,9 @@
 import Mirage from 'ember-cli-mirage';
+import UrlEncoded from 'npm:urlencode';
 
 export default function() {
   this.post('/token', function(db, request) {
-    let body = JSON.parse(request.requestBody);
+    let body = UrlEncoded.parse(request.requestBody);
 
     if (body.grant_type !== 'password') {
       return new Mirage.Response(400, {}, {
