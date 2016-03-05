@@ -1,7 +1,7 @@
 {
-  "name": "smallscrum",
-  "version": "0.0.0",
-  "description": "Small description for smallscrum goes here",
+  "name": "SmallScrum",
+  "version": "0.1.0",
+  "description": "An agile project management system specifically suited for the needs of digital agencies.",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -12,11 +12,16 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "JoshTumath/smallscrum",
+  "bugs": "https://tree.taiga.io/project/joshtumath-smallscrum/",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": {
+    "name": "Josh Tumath",
+    "email": "josh@joshtumath.uk",
+    "url": "https://joshtumath.uk/"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
