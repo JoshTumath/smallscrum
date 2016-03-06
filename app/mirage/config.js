@@ -2,7 +2,17 @@ import Mirage from 'ember-cli-mirage';
 import UrlEncoded from 'npm:urlencode';
 
 export default function() {
-  this.post('/token', function(db, request) {
+  this.get('/api/projects', function (db) {
+    return {
+      data: db.projects.map(attrs => ({
+        type: 'projects',
+        id: attrs.id,
+        attributes: attrs
+      }))
+    };
+  });
+
+  this.post('/token', function (db, request) {
     let body = UrlEncoded.parse(request.requestBody);
 
     if (body.grant_type !== 'password') {
