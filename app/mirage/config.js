@@ -2,10 +2,35 @@ import Mirage from 'ember-cli-mirage';
 import UrlEncoded from 'npm:urlencode';
 
 export default function() {
-  this.get('/api/projects', function (db) {
+  this.get('/api/projects', function (db, request) {
+    if (request.queryParams.slug) {
+      let project = db.projects.where({slug: request.queryParams.slug});
+
+      if (project.length === 0) {
+        return new Mirage.Response(404, {}, {
+          'errors': [
+            {
+              'status': 404,
+              'source': { 'parameter': 'slug' },
+              'title': 'Cannot find project',
+              'details': 'This project does not exist.'
+            }
+          ]
+        });
+      }
+
+      return {
+        data: {
+          type: 'project',
+          id: project[0].id,
+          attributes: project[0]
+        }
+      };
+    }
+
     return {
       data: db.projects.map(attrs => ({
-        type: 'projects',
+        type: 'project',
         id: attrs.id,
         attributes: attrs
       }))
