@@ -13,10 +13,15 @@ test('it renders', function(assert) {
 });
 
 test('data is entered correctly', function(assert) {
-  assert.expect(1);
+  assert.expect(2);
 
-  this.set('model', this.store().findRecord('project', 1));
+  this.set('project', {
+    'id': 1,
+    'name': 'Foobar',
+    'slug': 'foobar'
+  });
   this.render(hbs`{{ss-project-listing project}}`);
 
-  assert.ok(this.$().text().indexOf('Cardigan Bay Holiday Homes', 0) >= 0);
+  assert.ok(this.$().text().indexOf('Foobar', 0) >= 0);
+  assert.ok(this.$('a'));
 });
