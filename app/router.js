@@ -9,7 +9,9 @@ Router.map(function() {
   this.route('login');
 
   this.route('projects');
-  this.route('project', { path: '/projects/:project_slug' });
+  this.route('project', { path: '/projects/:project_slug' }, function() {
+    this.route('user-stories');
+  });
 
   this.route('page-not-found', { path: '/*wildcard' });
 });

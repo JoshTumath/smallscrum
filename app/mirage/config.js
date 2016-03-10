@@ -37,6 +37,16 @@ export default function() {
     };
   });
 
+  this.get('/api/user-stories', function (db) {
+    return {
+      data: db['user-stories'].map(attrs => ({
+        type: 'user-story',
+        id: attrs.id,
+        attributes: attrs
+      }))
+    };
+  });
+
   this.post('/token', function (db, request) {
     let body = UrlEncoded.parse(request.requestBody);
 
