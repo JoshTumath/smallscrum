@@ -37,6 +37,26 @@ export default function() {
     };
   });
 
+  this.get('/api/user-stories', function (db) {
+    return {
+      data: db['user-stories'].map(attrs => ({
+        type: 'user-story',
+        id: attrs.id,
+        attributes: attrs
+      }))
+    };
+  });
+
+  this.get('/api/user-stories/:id', function (db, request) {
+    return {
+      data: {
+        type: 'user-story',
+        id: request.params.id,
+        attributes: db.projects.find(request.params.id)
+      }
+    };
+  });
+
   this.post('/token', function (db, request) {
     let body = UrlEncoded.parse(request.requestBody);
 
