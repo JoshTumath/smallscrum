@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    return this.store.findAll('user-story');
+  model(params) {
+    return this.store.query('user-story', { filter: { project: params.project_slug } });
   }
 });

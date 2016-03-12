@@ -1,1 +1,5 @@
-<strong>{{user-story.name}}</strong>
+<strong>
+  {{#link-to 'project.user-stories.user-story' user-story.id}}
+    {{user-story.name}}
+  {{/link-to}}
+</strong>
