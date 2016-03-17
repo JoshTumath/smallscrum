@@ -12,6 +12,8 @@ app.use(express.static(__dirname + '/public'));
 routes(app);
 
 // Listen //////////////////////////////////////////////////////////////////////
-app.listen(port);
+app.listen(port, function () {
+  console.log('Listening on port ' + port);
+});
 
 module.exports = app;

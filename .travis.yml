@@ -25,5 +25,6 @@ install:
 
 script:
   - npm test
+  - ember build -o ../public
   - cd ..
   - npm test
