@@ -1,8 +1,8 @@
-var express = require('express');
-var routes = require('./app/routes');
+const express = require('express');
+const routes = require('./app/routes');
 
-var app = express();
-var port = process.env.PORT || 3000;
+const app = express();
+const port = process.env.PORT || 3000;
 
 // Configuration ///////////////////////////////////////////////////////////////
 // The location from which the Ember application will be served
@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 routes(app, __dirname);
 
 // Listen //////////////////////////////////////////////////////////////////////
-app.listen(port, function () {
+app.listen(port, () => {
   console.log('Listening on port ' + port);
 });
 
