@@ -8,6 +8,8 @@ sudo: false
 cache:
   directories:
     - node_modules
+    - core/client/node_modules
+    - core/client/bower_components
 
 before_install:
   - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
@@ -17,7 +19,11 @@ before_install:
 install:
   - npm install -g bower
   - npm install
+  - cd ember
+  - npm install
   - bower install
 
 script:
+  - npm test
+  - cd ..
   - npm test
