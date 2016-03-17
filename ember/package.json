@@ -1,6 +1,6 @@
 {
-  "name": "smallscrum",
-  "version": "0.1.0",
+  "name": "smallscrum-client",
+  "version": "0.0.0",
   "description": "An agile project management system specifically suited for the needs of digital agencies.",
   "private": true,
   "directories": {
@@ -12,7 +12,7 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "JoshTumath/smallscrum",
+  "repository": "",
   "bugs": "https://tree.taiga.io/project/joshtumath-smallscrum/",
   "engines": {
     "node": ">= 0.10.0"
