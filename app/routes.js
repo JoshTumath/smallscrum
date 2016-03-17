@@ -1,5 +1,5 @@
-module.exports = function (app) {
+module.exports = function (app, root) {
   app.get('*', function (req, res) {
-    res.sendfile('./public/index.html');
+    res.sendFile(root + '/public/index.html');
   });
 };
