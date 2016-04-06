@@ -24,10 +24,10 @@ test('visiting /projects logged in', function (assert) {
 test('viewing projects', function (assert) {
   authenticateSession(this.application, 'foo');
   visit('/projects');
-  
-  click('.btn-create-project');
+
+  click('.btn-project-form');
   fillIn('input[id$="-name"]', 'Foo');
-  click('.btn-create-project-submit');
+  click('.btn-project-form-submit');
 
   andThen(function () {
     assert.ok(find('li:last-child').text().indexOf('Foo', 0));

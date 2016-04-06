@@ -1,0 +1,15 @@
+<button {{action "showForm"}} class="btn-project-form">Create project...</button>
+
+{{#if isFormShowing}}
+  <form {{action "create" on="submit"}}>
+    <ul>
+      <li>
+        <label for="{{concat elementId '-name'}}">Name</label>
+        {{input value=name id=(concat elementId '-name')}}
+      </li>
+    </ul>
+
+    <button type="submit" class="btn-project-form-submit">Submit</button>
+    <button type="button" {{action "hideForm"}} class="btn-project-form-cancel">Cancel</button>
+  </form>
+{{/if}}
