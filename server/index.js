@@ -3,9 +3,10 @@
 module.exports = function(app) {
   var Fortune = require('fortune');
   var JsonApiSerializer = require('fortune-json-api');
+  var seed = require('./seed');
 
-  app.use('/api', Fortune.net.http(new Fortune({
-    // Models
+  // Create the fortune.js data manager with models to be used by the database
+  var store = new Fortune({
     project: {
       name: { type: String },
       slug: { type: String },
@@ -15,10 +16,15 @@ module.exports = function(app) {
       name: { type: String },
       project: { link: 'project', inverse: 'userStories' }
     }
-  }), {
-    // Set all fortune.js communications to be done using JSON API
+  });
+
+  // Tell the server to let fortune.js handle all API calls to
+  app.use('/api', Fortune.net.http(store, {
+    // Set all communications to be done using JSON API
     serializers: [[JsonApiSerializer, {
       prefix: 'api'
     }]]
   }));
+
+  seed(store);
 };
