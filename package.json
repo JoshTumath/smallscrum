@@ -44,6 +44,9 @@
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.x",
+    "express": "^4.13.4",
+    "fortune": "^3.5.1",
+    "fortune-json-api": "^2.0.4",
     "loader.js": "^4.0.0",
     "urlencode": "^1.1.0"
   }
