@@ -1,7 +1,14 @@
-<button {{action "showForm"}} class="btn-project-form">Create project...</button>
+<button {{action "showForm"}} class="btn-project-form">
+  {{#if project}}
+    Edit
+  {{else}}
+    Create
+  {{/if}}
+  project...
+</button>
 
 {{#if isFormShowing}}
-  <form {{action "create" on="submit"}}>
+  <form {{action "submit" on="submit"}}>
     <ul>
       <li>
         <label for="{{concat elementId '-name'}}">Name</label>
