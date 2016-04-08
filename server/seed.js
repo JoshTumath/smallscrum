@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Seed the database with initial test data
  * @param {Fortune} store the store

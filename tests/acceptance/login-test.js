@@ -11,6 +11,16 @@ test('visiting /login', function (assert) {
   });
 });
 
+test('visiting /token', function (assert) {
+  visit('/token');
+
+  andThen(function () {
+    // XXX: In future, this will need to be changed to the actual homepage that
+    // gets used. Probably /projects
+    assert.equal(currentURL(), '/token');
+  });
+});
+
 /*test('redirecting to /login from homepage if not logged in', function (assert) {
   visit('/');
 
