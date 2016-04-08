@@ -1,39 +1,24 @@
 /*jshint node:true*/
-'use strict';
+
+// To use it create some files under `mocks/`
+// e.g. `server/mocks/ember-hamsters.js`
+//
+// module.exports = function(app) {
+//   app.get('/ember-hamsters', function(req, res) {
+//     res.send('hello');
+//   });
+// };
 
 module.exports = function(app) {
-  var Fortune = require('fortune');
-  var JsonApiSerializer = require('fortune-json-api');
-  var morgan = require('morgan');
-  var routes = require('./routes');
-  var seedDatabase = require('./seed');
-
-  // Create the fortune.js data manager with models to be used by the database
-  var store = new Fortune({
-    project: {
-      name: { type: String },
-      slug: { type: String },
-      userStories: { link: 'userStory', inverse: 'project', isArray: true }
-    },
-    userStory: {
-      name: { type: String },
-      project: { link: 'project', inverse: 'userStories' }
-    }
-  });
-
-  seedDatabase(store);
+  var globSync   = require('glob').sync;
+  var mocks      = globSync('./mocks/**/*.js', { cwd: __dirname }).map(require);
+  var proxies    = globSync('./proxies/**/*.js', { cwd: __dirname }).map(require);
 
   // Log proxy requests
+  var morgan  = require('morgan');
   app.use(morgan('dev'));
 
-  // Set up additional mock resources
-  app.use('/', routes());
+  mocks.forEach(function(route) { route(app); });
+  proxies.forEach(function(route) { route(app); });
 
-  // Tell the server to let fortune.js handle all API calls to
-  app.use('/api', Fortune.net.http(store, {
-    // Set all communications to be done using JSON API
-    serializers: [[JsonApiSerializer, {
-      prefix: 'api'
-    }]]
-  }));
 };

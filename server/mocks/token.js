@@ -1,20 +1,12 @@
-'use strict';
-
-/**
- * Routes for additional pages and services being mocked.
- * @return {Router} the express.js router middleware
- */
-module.exports = function () {
+/*jshint node:true*/
+module.exports = function(app) {
   var bodyParser = require('body-parser');
   var express = require('express');
+  var tokenRouter = express.Router();
 
-  var router = express.Router();
+  tokenRouter.use(bodyParser.urlencoded({ extended: false }));
 
-  router.use(bodyParser.json({ type: 'application/*+json' }));
-  router.use(bodyParser.urlencoded({ extended: false }));
-
-  // Mock oauth2 response
-  router.post('/token', function (req, res) {
+  tokenRouter.post('/', function (req, res) {
     if (req.body.grant_type !== 'password') {
       res.status(400).json({
         'error': 'unsupported_grant_type'
@@ -34,5 +26,5 @@ module.exports = function () {
     });
   });
 
-  return router;
+  app.use('/token', tokenRouter);
 };
