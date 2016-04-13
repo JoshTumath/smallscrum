@@ -10,7 +10,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "test-server": "node server/test"
   },
   "repository": "JoshTumath/smallscrum",
   "bugs": "https://tree.taiga.io/project/joshtumath-smallscrum/",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "body-parser": "^1.15.0",
     "broccoli-asset-rev": "^2.2.0",
+    "cors": "^2.7.1",
     "ember-ajax": "0.7.1",
     "ember-browserify": "^1.1.7",
     "ember-cli": "2.3.0",

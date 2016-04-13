@@ -16,15 +16,15 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+1. `git clone <repository-url>` this repository
+2. change into the new directory
+3. `npm install`
+4. `bower install`
 
 ## Running / Development
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+1. `ember server`
+2. Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
 
@@ -32,8 +32,10 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Running Tests
 
-* `ember test`
-* `ember test --server`
+1. Run command in terminal window: `npm run-script test-server`
+2. Run either command in another terminal window:
+  * `ember test`
+  * `ember test --server`
 
 ### Building
 
@@ -42,7 +44,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Use [smallscrum-server](https://github.com/JoshTumath/smallscrum-server) to
+deploy the app on a production server.
 
 ## Further Reading / Useful Links
 
@@ -51,4 +54,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

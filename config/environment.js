@@ -32,6 +32,10 @@ module.exports = function(environment) {
     ENV.baseURL = '/';
     ENV.locationType = 'none';
 
+    // For connecting to the mock server which is on a different port
+    ENV.serverURL = 'http://localhost:4200';
+    ENV.oauth2Token = 'http://localhost:4200/token';
+
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;

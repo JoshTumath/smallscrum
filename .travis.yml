@@ -19,5 +19,8 @@ install:
   - npm install
   - bower install
 
+before_script:
+  - npm run-script test-server &
+
 script:
   - npm test
