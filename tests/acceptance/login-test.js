@@ -15,19 +15,9 @@ test('visiting /token', function (assert) {
   visit('/token');
 
   andThen(function () {
-    // XXX: In future, this will need to be changed to the actual homepage that
-    // gets used. Probably /projects
     assert.equal(currentURL(), '/token');
   });
 });
-
-/*test('redirecting to /login from homepage if not logged in', function (assert) {
-  visit('/');
-
-  andThen(function () {
-    assert.equal(currentURL(), '/login');
-  });
-});*/
 
 test('successful login', function (assert) {
   visit('/login');
@@ -36,9 +26,7 @@ test('successful login', function (assert) {
   click('button');
 
   andThen(function () {
-    // XXX: In future, this will need to be changed to the actual homepage that
-    // gets used. Probably /projects
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/projects');
   });
 });
 
