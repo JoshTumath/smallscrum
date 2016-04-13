@@ -37,8 +37,8 @@ export default Ember.Component.extend({
         });
 
         record.save()
-        .then((foo) => {// TODO: Mirage routes for saving. Finish transitionTo
-          this.hideForm();
+        .then(() => {
+          this.send('hideForm');
         });
       } else {
         // Edit
