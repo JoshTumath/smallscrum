@@ -14,7 +14,10 @@ export default Ember.Component.extend({
     if (this.get('project')) {
       // We must make a copy of the model being passed into the component so
       // that data will not be shared
+      console.log(this.get('project'));
+      this.set('id', this.get('project.id'));
       this.set('name', this.get('project.name'));
+      this.set('slug', this.get('project.slug'));
     } else {
       this.set('project', null);
     }
@@ -33,7 +36,8 @@ export default Ember.Component.extend({
       if (this.get('project') === null) {
         // Create
         let record = this.get('store').createRecord('project', {
-          name: this.get('name')
+          name: this.get('name'),
+          slug: this.get('slug')
         });
 
         record.save()
@@ -42,15 +46,25 @@ export default Ember.Component.extend({
         });
       } else {
         // Edit
-        this.get('store').findRecord('project', this.get('project.id'))
+        this.get('store').findRecord('project', this.get('id'))
         .then((record) => {
           record.set('name', this.get('name'));
+          record.set('slug', this.get('slug'));
 
           return record.save();
         }).then(() => {
-          this.hideForm();
+          this.send('hideForm');
         });
       }
+    },
+
+    delete() {
+      this.get('store').findRecord('project', this.get('id'))
+      .then((record) => {
+        return record.destroyRecord();
+      }).then(() => {
+        this.send('navigateUp');
+      });
     }
   }
 });

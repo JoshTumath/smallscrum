@@ -7,6 +7,10 @@
   project...
 </button>
 
+{{#if project}}
+  <button {{action "delete"}} class="btn-project-delete">Delete</button>
+{{/if}}
+
 {{#if isFormShowing}}
   <form {{action "submit" on="submit"}}>
     <ul>
@@ -14,6 +18,10 @@
         <label for="{{concat elementId '-name'}}">Name</label>
         {{input value=name id=(concat elementId '-name')}}
       </li>
+        <li>
+          <label for="{{concat elementId '-slug'}}">Slug</label>
+          {{input value=slug id=(concat elementId '-slug')}}
+        </li>
     </ul>
 
     <button type="submit" class="btn-project-form-submit">Submit</button>
