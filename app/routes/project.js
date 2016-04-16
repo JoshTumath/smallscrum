@@ -20,6 +20,29 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   actions: {
     navigateUp() {
       this.transitionTo('projects');
+    },
+
+    update(id, newFields) {
+      this.store.findRecord('project', id)
+
+      .then((record) => {
+        record.set('name', newFields.name);
+        record.set('slug', newFields.slug);
+
+        record.save();
+      });
+    },
+
+    delete(id) {
+      this.store.findRecord('project', id)
+
+      .then((record) => {
+        return record.destroyRecord();
+      })
+
+      .then(() => {
+        this.send('navigateUp');
+      });
     }
   }
 });

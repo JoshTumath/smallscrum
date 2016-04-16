@@ -8,19 +8,19 @@
 </button>
 
 {{#if project}}
-  <button {{action "delete"}} class="btn-project-delete">Delete</button>
+  <button {{action "deleteButton"}} class="btn-project-delete">Delete</button>
 {{/if}}
 
 {{#if isFormShowing}}
-  <form {{action "submit" on="submit"}}>
+  <form {{action "submitForm" on="submit"}}>
     <ul>
       <li>
         <label for="{{concat elementId '-name'}}">Name</label>
-        {{input value=name id=(concat elementId '-name')}}
+        {{input value=formData.name id=(concat elementId '-name')}}
       </li>
         <li>
           <label for="{{concat elementId '-slug'}}">Slug</label>
-          {{input value=slug id=(concat elementId '-slug')}}
+          {{input value=formData.slug id=(concat elementId '-slug')}}
         </li>
     </ul>
 

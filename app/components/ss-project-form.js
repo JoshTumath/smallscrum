@@ -1,10 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  store: Ember.inject.service(),
-
   isFormShowing: false,
   project: null,
+  formData: {},
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -14,10 +13,9 @@ export default Ember.Component.extend({
     if (this.get('project')) {
       // We must make a copy of the model being passed into the component so
       // that data will not be shared
-      console.log(this.get('project'));
       this.set('id', this.get('project.id'));
-      this.set('name', this.get('project.name'));
-      this.set('slug', this.get('project.slug'));
+      this.set('formData.name', this.get('project.name'));
+      this.set('formData.slug', this.get('project.slug'));
     } else {
       this.set('project', null);
     }
@@ -32,39 +30,21 @@ export default Ember.Component.extend({
       this.set('isFormShowing', false);
     },
 
-    submit() {
+    submitForm() {
       if (this.get('project') === null) {
-        // Create
-        let record = this.get('store').createRecord('project', {
-          name: this.get('name'),
-          slug: this.get('slug')
-        });
-
-        record.save()
-        .then(() => {
-          this.send('hideForm');
-        });
+        // Bubble up to projects route
+        this.send('create', this.get('formData'));
+        this.send('hideForm');
       } else {
-        // Edit
-        this.get('store').findRecord('project', this.get('id'))
-        .then((record) => {
-          record.set('name', this.get('name'));
-          record.set('slug', this.get('slug'));
-
-          return record.save();
-        }).then(() => {
-          this.send('hideForm');
-        });
+        // Bubble up to project route
+        this.send('update', this.get('id'), this.get('formData'));
+        this.send('hideForm');
       }
     },
 
-    delete() {
-      this.get('store').findRecord('project', this.get('id'))
-      .then((record) => {
-        return record.destroyRecord();
-      }).then(() => {
-        this.send('navigateUp');
-      });
+    deleteButton() {
+      // Bubble up to project route
+      this.send('delete', this.get('id'));
     }
   }
 });
