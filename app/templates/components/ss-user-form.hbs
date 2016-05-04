@@ -1,0 +1,38 @@
+<button {{action "showForm"}} class="btn-user-form">
+  {{#if userStory}}
+    Edit
+  {{else}}
+    Register a new
+  {{/if}}
+  user...
+</button>
+
+{{#if project}}
+  <button {{action "deleteButton"}} class="btn-user-delete">Delete</button>
+{{/if}}
+
+{{#if isFormShowing}}
+  <form {{action "submitForm" on="submit"}}>
+    <ul>
+      <li>
+        <label for="{{concat elementId '-email'}}">Email</label>
+        {{input value=formData.email id=(concat elementId '-email')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-password'}}">Password</label>
+        {{input type="password" value=formData.password id=(concat elementId '-password')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-firstname'}}">First name</label>
+        {{input value=formData.firstName id=(concat elementId '-firstname')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-lastname'}}">Last name</label>
+        {{input value=formData.lastName id=(concat elementId '-lastname')}}
+      </li>
+    </ul>
+
+    <button type="submit" class="btn-user-form-submit">Submit</button>
+    <button type="button" {{action "hideForm"}} class="btn-user-form-cancel">Cancel</button>
+  </form>
+{{/if}}

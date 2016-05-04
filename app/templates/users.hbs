@@ -1,0 +1,11 @@
+{{ss-user-form target=this}}
+
+<ol>
+  {{#each model as |user|}}
+    <li>
+      <strong>
+        {{user.firstName}} {{user.lastName}}
+      </strong>
+    </li>
+  {{/each}}
+</ol>

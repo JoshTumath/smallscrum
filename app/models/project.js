@@ -5,5 +5,6 @@ export default DS.Model.extend({
   slug: DS.attr('string'),
 
   supportTickets: DS.hasMany('support-ticket'),
-  userStories: DS.hasMany('user-story')
+  userStories: DS.hasMany('user-story'),
+  assignedUsers: DS.hasMany('user')
 });

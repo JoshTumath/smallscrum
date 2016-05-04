@@ -9,5 +9,6 @@ export default DS.Model.extend({
     defaultValue() { return new Date(); }
   }),
 
-  project: DS.belongsTo('project')
+  project: DS.belongsTo('project'),
+  user: DS.belongsTo('user')
 });
