@@ -1,5 +1,18 @@
 <h2>{{model.name}}</h2>
 {{ss-project-form project=model target=this}}
 
-{{#link-to 'project.user-stories' model.slug}}User stories{{/link-to}}
+<nav>
+  <ul>
+    <li>
+      {{#link-to 'project.user-stories' model.slug}}
+        User stories
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'project.support-tickets' model.slug}}
+        Support tickets
+      {{/link-to}}
+    </li>
+  </ul>
+</nav>
 {{outlet}}

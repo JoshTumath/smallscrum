@@ -1,0 +1,42 @@
+<button {{action "showForm"}} class="btn-support-ticket-form">
+  {{#if supportTicket}}
+    Edit
+  {{else}}
+    Create
+  {{/if}}
+  support ticket...
+</button>
+
+{{#if project}}
+  <button {{action "deleteButton"}} class="btn-support-ticket-delete">Delete</button>
+{{/if}}
+
+{{#if isFormShowing}}
+  <form {{action "submitForm" on="submit"}}>
+    <ul>
+      <li>
+        <label for="{{concat elementId '-name'}}">Name</label>
+        {{input value=formData.name id=(concat elementId '-name')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-description'}}">Description</label>
+        {{textarea value=formData.description id=(concat elementId '-description')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-complete'}}">
+          {{input type="checkbox" name="formData.complete" checked=formData.complete id=(concat elementId '-complete')}}
+          Is completed
+        </label>
+      </li>
+      <li>
+        <label for="{{concat elementId '-urgent'}}">
+          {{input type="checkbox" name="formData.urgent" checked=formData.urgent id=(concat elementId '-urgent')}}
+          Is urgent
+        </label>
+      </li>
+    </ul>
+
+    <button type="submit" class="btn-support-ticket-form-submit">Submit</button>
+    <button type="button" {{action "hideForm"}} class="btn-support-ticket-form-cancel">Cancel</button>
+  </form>
+{{/if}}

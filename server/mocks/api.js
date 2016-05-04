@@ -8,10 +8,26 @@ module.exports = function(app) {
     'project': {
       name: { type: String },
       slug: { type: String },
+
+      supportTickets: { link: 'support-ticket', inverse: 'project', isArray: true },
       userStories: { link: 'user-story', inverse: 'project', isArray: true }
     },
+
+    'support-ticket': {
+      name: { type: String },
+      description: { type: String },
+      complete: { type: Boolean },
+      urgent: { type: Boolean },
+      creationDate: { type: Date },
+
+      project: { link: 'project', inverse: 'supportTickets' }
+    },
+
     'user-story': {
       name: { type: String },
+      acceptanceCriteria: { type: String },
+      complete: { type: Boolean },
+
       project: { link: 'project', inverse: 'userStories' }
     }
   });

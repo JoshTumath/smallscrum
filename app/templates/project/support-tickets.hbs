@@ -1,0 +1,15 @@
+{{ss-support-ticket-form target=this}}
+
+<ol>
+  {{#each model as |supportTicket|}}
+    <li>
+      <strong>
+        {{#link-to 'project.support-tickets.support-ticket' supportTicket.id}}
+          {{supportTicket.name}}
+        {{/link-to}}
+      </strong>
+    </li>
+  {{/each}}
+</ol>
+
+{{outlet}}

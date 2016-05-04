@@ -13,6 +13,9 @@ Router.map(function() {
     this.route('user-stories', function() {
       this.route('user-story', { path: '/:user_story_id' });
     });
+    this.route('support-tickets', function() {
+      this.route('support-ticket', { path: '/:support_ticket_id' });
+    });
   });
 
   this.route('page-not-found', { path: '/*wildcard' });
