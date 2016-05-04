@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('project/support-ticket', 'Unit | Model | project/support ticket', {
+moduleForModel('support-ticket', 'Unit | Model | support ticket', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:project', 'model:user']
 });
 
 test('it exists', function(assert) {
