@@ -1,9 +1,15 @@
-<ul>
-  {{#each model as |user-story|}}
+{{ss-user-story-form target=this}}
+
+<ol>
+  {{#each model as |userStory|}}
     <li>
-      {{ss-user-story-listing user-story}}
+      <strong>
+        {{#link-to 'project.user-stories.user-story' userStory.id}}
+          {{userStory.name}}
+        {{/link-to}}
+      </strong>
     </li>
   {{/each}}
-</ul>
+</ol>
 
 {{outlet}}

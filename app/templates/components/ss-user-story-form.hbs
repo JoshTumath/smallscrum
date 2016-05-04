@@ -1,0 +1,36 @@
+<button {{action "showForm"}} class="btn-user-story-form">
+  {{#if userStory}}
+    Edit
+  {{else}}
+    Create
+  {{/if}}
+  user story...
+</button>
+
+{{#if project}}
+  <button {{action "deleteButton"}} class="btn-user-story-delete">Delete</button>
+{{/if}}
+
+{{#if isFormShowing}}
+  <form {{action "submitForm" on="submit"}}>
+    <ul>
+      <li>
+        <label for="{{concat elementId '-name'}}">Name</label>
+        {{input value=formData.name id=(concat elementId '-name')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-ac'}}">Acceptance criteria</label>
+        {{textarea value=formData.acceptanceCriteria id=(concat elementId '-ac')}}
+      </li>
+      <li>
+        <label for="{{concat elementId '-complete'}}">
+          {{input type="checkbox" checked=formData.complete id=(concat elementId '-complete')}}
+          Is completed
+        </label>
+      </li>
+    </ul>
+
+    <button type="submit" class="btn-user-story-form-submit">Submit</button>
+    <button type="button" {{action "hideForm"}} class="btn-user-story-form-cancel">Cancel</button>
+  </form>
+{{/if}}

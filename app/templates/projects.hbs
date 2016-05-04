@@ -3,7 +3,11 @@
 <ol>
   {{#each model as |project|}}
     <li>
-      {{ss-project-listing project}}
+      <strong>
+        {{#link-to "project" project.slug}}
+          {{project.name}}
+        {{/link-to}}
+      </strong>
     </li>
   {{/each}}
 </ol>
