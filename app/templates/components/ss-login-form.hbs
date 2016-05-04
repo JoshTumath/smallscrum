@@ -5,11 +5,17 @@
 
   {{yield}}
 
-  <label for="{{concat elementId '-email'}}">Email</label>
-  {{input type='email' value=email id=(concat elementId '-email')}}
+  <ul>
+    <li>
+      <label for="{{concat elementId '-email'}}">Email</label>
+      {{input type='email' value=email id=(concat elementId '-email')}}
+    </li>
 
-  <label for="{{concat elementId '-password'}}">Password</label>
-  {{input type='password' value=password id=(concat elementId '-password')}}
+    <li>
+      <label for="{{concat elementId '-password'}}">Password</label>
+      {{input type='password' value=password id=(concat elementId '-password')}}
+    </li>
+  </ul>
 
   <button type="submit">Login</button>
 </form>
