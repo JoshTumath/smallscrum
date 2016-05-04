@@ -19,7 +19,7 @@ export default Ember.Component.extend({
       this.set('formData.complete', this.get('supportTicket.complete'));
       this.set('formData.urgent', this.get('supportTicket.urgent'));
     } else {
-      this.set('project', null);
+      this.set('supportTicket', null);
     }
   },
 

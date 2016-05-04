@@ -18,7 +18,7 @@ export default Ember.Component.extend({
       this.set('formData.acceptanceCriteria', this.get('userStory.acceptanceCriteria'));
       this.set('formData.complete', this.get('userStory.complete'));
     } else {
-      this.set('project', null);
+      this.set('userStory', null);
     }
   },
 
