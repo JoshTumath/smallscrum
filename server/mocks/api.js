@@ -5,12 +5,12 @@ module.exports = function(app) {
   var JsonApiSerializer = require('fortune-json-api');
 
   var store = new Fortune({
-    project: {
+    'project': {
       name: { type: String },
       slug: { type: String },
-      userStories: { link: 'userStory', inverse: 'project', isArray: true }
+      userStories: { link: 'user-story', inverse: 'project', isArray: true }
     },
-    userStory: {
+    'user-story': {
       name: { type: String },
       project: { link: 'project', inverse: 'userStories' }
     }
@@ -42,4 +42,4 @@ function seedDatabase(store) {
       { name: 'Borth College', slug: 'borth-college' }
     ]
   });
-};
+}

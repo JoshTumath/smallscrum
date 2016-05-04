@@ -7,6 +7,8 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
+      LOG_STACKTRACE_ON_DEPRECATION: false,
+
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -16,6 +18,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'ember-simple-auth': {
+      routeAfterAuthentication: 'projects',
+      routeIfAlreadyAuthenticated: 'projects'
     }
   };
 
@@ -39,7 +46,6 @@ module.exports = function(environment) {
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    ENV.APP.LOG_STACKTRACE_ON_DEPRECATION = false;
 
     ENV.APP.rootElement = '#ember-testing';
   }

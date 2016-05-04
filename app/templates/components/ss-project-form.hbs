@@ -1,0 +1,30 @@
+<button {{action "showForm"}} class="btn-project-form">
+  {{#if project}}
+    Edit
+  {{else}}
+    Create
+  {{/if}}
+  project...
+</button>
+
+{{#if project}}
+  <button {{action "deleteButton"}} class="btn-project-delete">Delete</button>
+{{/if}}
+
+{{#if isFormShowing}}
+  <form {{action "submitForm" on="submit"}}>
+    <ul>
+      <li>
+        <label for="{{concat elementId '-name'}}">Name</label>
+        {{input value=formData.name id=(concat elementId '-name')}}
+      </li>
+        <li>
+          <label for="{{concat elementId '-slug'}}">Slug</label>
+          {{input value=formData.slug id=(concat elementId '-slug')}}
+        </li>
+    </ul>
+
+    <button type="submit" class="btn-project-form-submit">Submit</button>
+    <button type="button" {{action "hideForm"}} class="btn-project-form-cancel">Cancel</button>
+  </form>
+{{/if}}
