@@ -36,11 +36,11 @@ module.exports = function(app) {
     'user': {
       email: { type: String },
       password: { type: String },
-      firstName: { type: Boolean },
-      lastName: { type: Boolean },
+      firstName: { type: String },
+      lastName: { type: String },
 
       projects: { link: 'project', inverse: 'assignedUsers', isArray: true },
-      supportTickets: { link: 'project', inverse: 'user', isArray: true }
+      supportTickets: { link: 'support-ticket', inverse: 'user', isArray: true }
     }
   });
 
@@ -68,6 +68,14 @@ function seedDatabase(store) {
       { name: 'NNP Letting Agency', slug: 'nnp' },
       { name: 'AUCU', slug: 'aberystwyth-cu' },
       { name: 'Borth College', slug: 'borth-college' }
+    ]
+  });
+
+  store.request({
+    type: 'user',
+    method: 'create',
+    payload: [
+      { email: 'test@example.com', password: 'password', firstName: 'John', lastName: 'Smith' }
     ]
   });
 }
