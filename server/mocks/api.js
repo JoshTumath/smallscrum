@@ -10,7 +10,8 @@ module.exports = function(app) {
       slug: { type: String },
 
       supportTickets: { link: 'support-ticket', inverse: 'project', isArray: true },
-      userStories: { link: 'user-story', inverse: 'project', isArray: true }
+      userStories: { link: 'user-story', inverse: 'project', isArray: true },
+      assignedUsers: { link: 'user', inverse: 'projects', isArray: true }
     },
 
     'support-ticket': {
@@ -20,7 +21,8 @@ module.exports = function(app) {
       urgent: { type: Boolean },
       creationDate: { type: Date },
 
-      project: { link: 'project', inverse: 'supportTickets' }
+      project: { link: 'project', inverse: 'supportTickets' },
+      user: { link: 'user', inverse: 'supportTickets' }
     },
 
     'user-story': {
@@ -29,6 +31,16 @@ module.exports = function(app) {
       complete: { type: Boolean },
 
       project: { link: 'project', inverse: 'userStories' }
+    },
+
+    'user': {
+      email: { type: String },
+      password: { type: String },
+      firstName: { type: Boolean },
+      lastName: { type: Boolean },
+
+      projects: { link: 'project', inverse: 'assignedUsers', isArray: true },
+      supportTickets: { link: 'project', inverse: 'user', isArray: true }
     }
   });
 
